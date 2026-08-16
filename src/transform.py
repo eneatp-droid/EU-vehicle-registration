@@ -137,6 +137,33 @@ def clean(df: pd.DataFrame) -> pd.DataFrame:
     return df.dropna(subset=["registrations"]) if "registrations" in df.columns else df
 
 
+def validate_processed_df(df: pd.DataFrame, dataset_code: str) -> pd.DataFrame:
+    """Check that the cleaned data is usable before loading or dashboarding."""
+    required_columns = {"country", "year", "power_type", "registrations"}
+    missing = required_columns.difference(df.columns)
+    if missing:
+        raise ValueError(
+            f"Dataset '{dataset_code}' is missing required columns: {sorted(missing)}"
+        )
+    if df.empty:
+        raise ValueError(f"Dataset '{dataset_code}' produced no rows after cleaning.")
+    if df["registrations"].isna().any():
+        raise ValueError(f"Dataset '{dataset_code}' contains null registration values.")
+    if (df["registrations"] < 0).any():
+        raise ValueError(f"Dataset '{dataset_code}' contains negative registrations.")
+    if df["year"].isna().any():
+        raise ValueError(f"Dataset '{dataset_code}' contains null years.")
+
+    logger.info(
+        "Validation passed for '%s': %d rows across %d countries and %d years.",
+        dataset_code,
+        len(df),
+        df["country"].nunique(),
+        df["year"].nunique(),
+    )
+    return df
+
+
 def save_processed(df: pd.DataFrame, dataset_code: str) -> Path:
     PROCESSED_DATA_DIR.mkdir(parents=True, exist_ok=True)
     output_path = PROCESSED_DATA_DIR / f"{dataset_code}_clean.csv"
@@ -149,6 +176,7 @@ def main(dataset_code: str = "road_eqr_carpda"):
     raw = load_latest_raw_file(dataset_code)
     df = jsonstat_to_dataframe(raw)
     df_clean = clean(df)
+    validate_processed_df(df_clean, dataset_code)
     save_processed(df_clean, dataset_code)
 
 

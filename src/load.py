@@ -9,7 +9,7 @@ import os
 from pathlib import Path
 
 import pandas as pd
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -35,7 +35,12 @@ def load_csv_to_staging(dataset_code: str, table_name: str = "stg_registros_veic
         raise FileNotFoundError(f"{csv_path} não existe. Rode transform.py primeiro.")
 
     df = pd.read_csv(csv_path)
+    if df.empty:
+        raise ValueError(f"Arquivo '{csv_path}' está vazio. Rode transform.py primeiro.")
+
     engine = get_engine()
+    with engine.begin() as conn:
+        conn.execute(text("CREATE SCHEMA IF NOT EXISTS staging"))
 
     logger.info("Loading %d rows into table '%s'...", len(df), table_name)
     df.to_sql(table_name, engine, schema="staging", if_exists="replace", index=False)

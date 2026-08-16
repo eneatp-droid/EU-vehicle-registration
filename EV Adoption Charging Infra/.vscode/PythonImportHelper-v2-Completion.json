@@ -1,0 +1,206 @@
+[
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "folium",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "folium",
+        "description": "folium",
+        "detail": "folium",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_eurostat_ev_registrations",
+        "kind": 2,
+        "importPath": "src.fetch_data",
+        "description": "src.fetch_data",
+        "peekOfCode": "def fetch_eurostat_ev_registrations() -> dict:\n    params = {\"format\": \"JSON\", \"lang\": \"EN\"}\n    response = requests.get(EUROSTAT_URL, params=params, timeout=30)\n    response.raise_for_status()\n    return response.json()\ndef fetch_charging_points(country_code: str, max_results: int = 500) -> list[dict]:\n    params = {\n        \"output\": \"json\",\n        \"countrycode\": country_code,\n        \"maxresults\": max_results,",
+        "detail": "src.fetch_data",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_charging_points",
+        "kind": 2,
+        "importPath": "src.fetch_data",
+        "description": "src.fetch_data",
+        "peekOfCode": "def fetch_charging_points(country_code: str, max_results: int = 500) -> list[dict]:\n    params = {\n        \"output\": \"json\",\n        \"countrycode\": country_code,\n        \"maxresults\": max_results,\n        \"compact\": True,\n        \"verbose\": False,\n        \"key\": OCM_API_KEY,\n    }\n    response = requests.get(OCM_URL, params=params, timeout=30)",
+        "detail": "src.fetch_data",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "src.fetch_data",
+        "description": "src.fetch_data",
+        "peekOfCode": "def main():\n    DATA_DIR.mkdir(parents=True, exist_ok=True)\n    logger.info(\"Baixando registros de veículos elétricos (Eurostat)...\")\n    ev_data = fetch_eurostat_ev_registrations()\n    import json\n    with open(DATA_DIR / \"eurostat_ev_registrations.json\", \"w\") as f:\n        json.dump(ev_data, f)\n    logger.info(\"Baixando pontos de recarga (OpenChargeMap) por país...\")\n    all_points = []\n    for code in EU_COUNTRY_CODES:",
+        "detail": "src.fetch_data",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "src.fetch_data",
+        "description": "src.fetch_data",
+        "peekOfCode": "logger = logging.getLogger(__name__)\nDATA_DIR = Path(__file__).resolve().parents[1] / \"data\"\nEUROSTAT_URL = \"https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/road_eqr_carpda\"\nOCM_URL = \"https://api.openchargemap.io/v3/poi\"\nOCM_API_KEY = os.getenv(\"OCM_API_KEY\", \"\")\nEU_COUNTRY_CODES = [\"DE\", \"FR\", \"IT\", \"ES\", \"NL\", \"PL\", \"SE\", \"PT\", \"BE\", \"AT\"]\ndef fetch_eurostat_ev_registrations() -> dict:\n    params = {\"format\": \"JSON\", \"lang\": \"EN\"}\n    response = requests.get(EUROSTAT_URL, params=params, timeout=30)\n    response.raise_for_status()",
+        "detail": "src.fetch_data",
+        "documentation": {}
+    },
+    {
+        "label": "DATA_DIR",
+        "kind": 5,
+        "importPath": "src.fetch_data",
+        "description": "src.fetch_data",
+        "peekOfCode": "DATA_DIR = Path(__file__).resolve().parents[1] / \"data\"\nEUROSTAT_URL = \"https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/road_eqr_carpda\"\nOCM_URL = \"https://api.openchargemap.io/v3/poi\"\nOCM_API_KEY = os.getenv(\"OCM_API_KEY\", \"\")\nEU_COUNTRY_CODES = [\"DE\", \"FR\", \"IT\", \"ES\", \"NL\", \"PL\", \"SE\", \"PT\", \"BE\", \"AT\"]\ndef fetch_eurostat_ev_registrations() -> dict:\n    params = {\"format\": \"JSON\", \"lang\": \"EN\"}\n    response = requests.get(EUROSTAT_URL, params=params, timeout=30)\n    response.raise_for_status()\n    return response.json()",
+        "detail": "src.fetch_data",
+        "documentation": {}
+    },
+    {
+        "label": "EUROSTAT_URL",
+        "kind": 5,
+        "importPath": "src.fetch_data",
+        "description": "src.fetch_data",
+        "peekOfCode": "EUROSTAT_URL = \"https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/road_eqr_carpda\"\nOCM_URL = \"https://api.openchargemap.io/v3/poi\"\nOCM_API_KEY = os.getenv(\"OCM_API_KEY\", \"\")\nEU_COUNTRY_CODES = [\"DE\", \"FR\", \"IT\", \"ES\", \"NL\", \"PL\", \"SE\", \"PT\", \"BE\", \"AT\"]\ndef fetch_eurostat_ev_registrations() -> dict:\n    params = {\"format\": \"JSON\", \"lang\": \"EN\"}\n    response = requests.get(EUROSTAT_URL, params=params, timeout=30)\n    response.raise_for_status()\n    return response.json()\ndef fetch_charging_points(country_code: str, max_results: int = 500) -> list[dict]:",
+        "detail": "src.fetch_data",
+        "documentation": {}
+    },
+    {
+        "label": "OCM_URL",
+        "kind": 5,
+        "importPath": "src.fetch_data",
+        "description": "src.fetch_data",
+        "peekOfCode": "OCM_URL = \"https://api.openchargemap.io/v3/poi\"\nOCM_API_KEY = os.getenv(\"OCM_API_KEY\", \"\")\nEU_COUNTRY_CODES = [\"DE\", \"FR\", \"IT\", \"ES\", \"NL\", \"PL\", \"SE\", \"PT\", \"BE\", \"AT\"]\ndef fetch_eurostat_ev_registrations() -> dict:\n    params = {\"format\": \"JSON\", \"lang\": \"EN\"}\n    response = requests.get(EUROSTAT_URL, params=params, timeout=30)\n    response.raise_for_status()\n    return response.json()\ndef fetch_charging_points(country_code: str, max_results: int = 500) -> list[dict]:\n    params = {",
+        "detail": "src.fetch_data",
+        "documentation": {}
+    },
+    {
+        "label": "OCM_API_KEY",
+        "kind": 5,
+        "importPath": "src.fetch_data",
+        "description": "src.fetch_data",
+        "peekOfCode": "OCM_API_KEY = os.getenv(\"OCM_API_KEY\", \"\")\nEU_COUNTRY_CODES = [\"DE\", \"FR\", \"IT\", \"ES\", \"NL\", \"PL\", \"SE\", \"PT\", \"BE\", \"AT\"]\ndef fetch_eurostat_ev_registrations() -> dict:\n    params = {\"format\": \"JSON\", \"lang\": \"EN\"}\n    response = requests.get(EUROSTAT_URL, params=params, timeout=30)\n    response.raise_for_status()\n    return response.json()\ndef fetch_charging_points(country_code: str, max_results: int = 500) -> list[dict]:\n    params = {\n        \"output\": \"json\",",
+        "detail": "src.fetch_data",
+        "documentation": {}
+    },
+    {
+        "label": "EU_COUNTRY_CODES",
+        "kind": 5,
+        "importPath": "src.fetch_data",
+        "description": "src.fetch_data",
+        "peekOfCode": "EU_COUNTRY_CODES = [\"DE\", \"FR\", \"IT\", \"ES\", \"NL\", \"PL\", \"SE\", \"PT\", \"BE\", \"AT\"]\ndef fetch_eurostat_ev_registrations() -> dict:\n    params = {\"format\": \"JSON\", \"lang\": \"EN\"}\n    response = requests.get(EUROSTAT_URL, params=params, timeout=30)\n    response.raise_for_status()\n    return response.json()\ndef fetch_charging_points(country_code: str, max_results: int = 500) -> list[dict]:\n    params = {\n        \"output\": \"json\",\n        \"countrycode\": country_code,",
+        "detail": "src.fetch_data",
+        "documentation": {}
+    },
+    {
+        "label": "load_charging_points",
+        "kind": 2,
+        "importPath": "src.merge_analyze",
+        "description": "src.merge_analyze",
+        "peekOfCode": "def load_charging_points() -> pd.DataFrame:\n    df = pd.read_csv(DATA_DIR / \"charging_points.csv\")\n    return df\ndef charging_points_per_country(df: pd.DataFrame) -> pd.Series:\n    return df.groupby(\"_country_code\").size().rename(\"num_charging_points\")\ndef build_map(df: pd.DataFrame, sample_size: int = 300) -> folium.Map:\n    \"\"\"Plot a sample of charging points on an interactive map.\"\"\"\n    m = folium.Map(location=[50.0, 10.0], zoom_start=4)\n    sample = df.dropna(subset=[\"AddressInfo.Latitude\", \"AddressInfo.Longitude\"]).sample(\n        min(sample_size, len(df))",
+        "detail": "src.merge_analyze",
+        "documentation": {}
+    },
+    {
+        "label": "charging_points_per_country",
+        "kind": 2,
+        "importPath": "src.merge_analyze",
+        "description": "src.merge_analyze",
+        "peekOfCode": "def charging_points_per_country(df: pd.DataFrame) -> pd.Series:\n    return df.groupby(\"_country_code\").size().rename(\"num_charging_points\")\ndef build_map(df: pd.DataFrame, sample_size: int = 300) -> folium.Map:\n    \"\"\"Plot a sample of charging points on an interactive map.\"\"\"\n    m = folium.Map(location=[50.0, 10.0], zoom_start=4)\n    sample = df.dropna(subset=[\"AddressInfo.Latitude\", \"AddressInfo.Longitude\"]).sample(\n        min(sample_size, len(df))\n    )\n    for _, row in sample.iterrows():\n        folium.CircleMarker(",
+        "detail": "src.merge_analyze",
+        "documentation": {}
+    },
+    {
+        "label": "build_map",
+        "kind": 2,
+        "importPath": "src.merge_analyze",
+        "description": "src.merge_analyze",
+        "peekOfCode": "def build_map(df: pd.DataFrame, sample_size: int = 300) -> folium.Map:\n    \"\"\"Plot a sample of charging points on an interactive map.\"\"\"\n    m = folium.Map(location=[50.0, 10.0], zoom_start=4)\n    sample = df.dropna(subset=[\"AddressInfo.Latitude\", \"AddressInfo.Longitude\"]).sample(\n        min(sample_size, len(df))\n    )\n    for _, row in sample.iterrows():\n        folium.CircleMarker(\n            location=[row[\"AddressInfo.Latitude\"], row[\"AddressInfo.Longitude\"]],\n            radius=2,",
+        "detail": "src.merge_analyze",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "src.merge_analyze",
+        "description": "src.merge_analyze",
+        "peekOfCode": "def main():\n    df_points = load_charging_points()\n    counts = charging_points_per_country(df_points)\n    logger.info(\"Pontos de recarga por país:\\n%s\", counts.sort_values(ascending=False))\n    # TODO: juntar com os dados de registro de VEs (eurostat_ev_registrations.json)\n    # para calcular pontos de recarga per capita de frota elétrica por país.\n    m = build_map(df_points)\n    output_path = Path(__file__).resolve().parents[1] / \"charging_points_map.html\"\n    m.save(str(output_path))\n    logger.info(\"Mapa salvo em %s\", output_path)",
+        "detail": "src.merge_analyze",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "src.merge_analyze",
+        "description": "src.merge_analyze",
+        "peekOfCode": "logger = logging.getLogger(__name__)\nDATA_DIR = Path(__file__).resolve().parents[1] / \"data\"\ndef load_charging_points() -> pd.DataFrame:\n    df = pd.read_csv(DATA_DIR / \"charging_points.csv\")\n    return df\ndef charging_points_per_country(df: pd.DataFrame) -> pd.Series:\n    return df.groupby(\"_country_code\").size().rename(\"num_charging_points\")\ndef build_map(df: pd.DataFrame, sample_size: int = 300) -> folium.Map:\n    \"\"\"Plot a sample of charging points on an interactive map.\"\"\"\n    m = folium.Map(location=[50.0, 10.0], zoom_start=4)",
+        "detail": "src.merge_analyze",
+        "documentation": {}
+    },
+    {
+        "label": "DATA_DIR",
+        "kind": 5,
+        "importPath": "src.merge_analyze",
+        "description": "src.merge_analyze",
+        "peekOfCode": "DATA_DIR = Path(__file__).resolve().parents[1] / \"data\"\ndef load_charging_points() -> pd.DataFrame:\n    df = pd.read_csv(DATA_DIR / \"charging_points.csv\")\n    return df\ndef charging_points_per_country(df: pd.DataFrame) -> pd.Series:\n    return df.groupby(\"_country_code\").size().rename(\"num_charging_points\")\ndef build_map(df: pd.DataFrame, sample_size: int = 300) -> folium.Map:\n    \"\"\"Plot a sample of charging points on an interactive map.\"\"\"\n    m = folium.Map(location=[50.0, 10.0], zoom_start=4)\n    sample = df.dropna(subset=[\"AddressInfo.Latitude\", \"AddressInfo.Longitude\"]).sample(",
+        "detail": "src.merge_analyze",
+        "documentation": {}
+    }
+]

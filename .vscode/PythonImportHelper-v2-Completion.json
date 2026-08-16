@@ -1,0 +1,428 @@
+[
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "DAG",
+        "importPath": "airflow",
+        "description": "airflow",
+        "isExtraImport": true,
+        "detail": "airflow",
+        "documentation": {}
+    },
+    {
+        "label": "PythonOperator",
+        "importPath": "airflow.operators.python",
+        "description": "airflow.operators.python",
+        "isExtraImport": true,
+        "detail": "airflow.operators.python",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "importPath": "extract",
+        "description": "extract",
+        "isExtraImport": true,
+        "detail": "extract",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "importPath": "transform",
+        "description": "transform",
+        "isExtraImport": true,
+        "detail": "transform",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "importPath": "load",
+        "description": "load",
+        "isExtraImport": true,
+        "detail": "load",
+        "documentation": {}
+    },
+    {
+        "label": "streamlit",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "detail": "streamlit",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "create_engine",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "default_args",
+        "kind": 5,
+        "importPath": "dags.registration_pipeline",
+        "description": "dags.registration_pipeline",
+        "peekOfCode": "default_args = {\n    \"owner\": \"portfolio\",\n    \"retries\": 2,\n}\nwith DAG(\n    dag_id=\"eu_vehicle_registration_etl\",\n    description=\"Ingere, transforma e carrega dados de registro de veículos na UE (Eurostat).\",\n    start_date=datetime(2026, 1, 1),\n    schedule_interval=\"@monthly\",\n    catchup=False,",
+        "detail": "dags.registration_pipeline",
+        "documentation": {}
+    },
+    {
+        "label": "PROCESSED_DATA_DIR",
+        "kind": 5,
+        "importPath": "src.dashboard",
+        "description": "src.dashboard",
+        "peekOfCode": "PROCESSED_DATA_DIR = Path(__file__).resolve().parents[1] / \"data\" / \"processed\"\ncsv_path = PROCESSED_DATA_DIR / \"road_eqr_carpda_clean.csv\"\ntry:\n    df = pd.read_csv(csv_path)\n    if len(df) <= 1:\n        st.warning(\"⚠️ Cleaned data too small. Showing **demo data** for visualization purposes.\")\n        # Generate demo data for showcase\n        countries = [\"Germany\", \"France\", \"Italy\", \"Spain\", \"Netherlands\", \"Belgium\", \"Poland\"]\n        power_types = [\"Combustion\", \"Hybrid\", \"Electric\"]\n        years = [2021, 2022, 2023, 2024, 2025]",
+        "detail": "src.dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "csv_path",
+        "kind": 5,
+        "importPath": "src.dashboard",
+        "description": "src.dashboard",
+        "peekOfCode": "csv_path = PROCESSED_DATA_DIR / \"road_eqr_carpda_clean.csv\"\ntry:\n    df = pd.read_csv(csv_path)\n    if len(df) <= 1:\n        st.warning(\"⚠️ Cleaned data too small. Showing **demo data** for visualization purposes.\")\n        # Generate demo data for showcase\n        countries = [\"Germany\", \"France\", \"Italy\", \"Spain\", \"Netherlands\", \"Belgium\", \"Poland\"]\n        power_types = [\"Combustion\", \"Hybrid\", \"Electric\"]\n        years = [2021, 2022, 2023, 2024, 2025]\n        demo_data = []",
+        "detail": "src.dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_eurostat_dataset",
+        "kind": 2,
+        "importPath": "src.extract",
+        "description": "src.extract",
+        "peekOfCode": "def fetch_eurostat_dataset(dataset_code: str, params: dict | None = None) -> dict:\n    \"\"\"Fetch a dataset from the Eurostat API and return it as parsed JSON.\"\"\"\n    url = f\"{EUROSTAT_BASE_URL}/{dataset_code}\"\n    default_params = {\"format\": \"JSON\", \"lang\": \"EN\"}\n    if params:\n        default_params.update(params)\n    logger.info(\"Fetching dataset %s from Eurostat...\", dataset_code)\n    response = requests.get(url, params=default_params, timeout=30)\n    response.raise_for_status()\n    return response.json()",
+        "detail": "src.extract",
+        "documentation": {}
+    },
+    {
+        "label": "save_raw",
+        "kind": 2,
+        "importPath": "src.extract",
+        "description": "src.extract",
+        "peekOfCode": "def save_raw(data: dict, dataset_code: str) -> Path:\n    \"\"\"Persist the raw JSON response with a timestamp, for reproducibility.\"\"\"\n    RAW_DATA_DIR.mkdir(parents=True, exist_ok=True)\n    timestamp = datetime.utcnow().strftime(\"%Y%m%dT%H%M%S\")\n    output_path = RAW_DATA_DIR / f\"{dataset_code}_{timestamp}.json\"\n    with open(output_path, \"w\", encoding=\"utf-8\") as f:\n        json.dump(data, f, ensure_ascii=False, indent=2)\n    logger.info(\"Raw data saved to %s\", output_path)\n    return output_path\ndef main():",
+        "detail": "src.extract",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "src.extract",
+        "description": "src.extract",
+        "peekOfCode": "def main():\n    data = fetch_eurostat_dataset(DATASET_CODE)\n    save_raw(data, DATASET_CODE)\nif __name__ == \"__main__\":\n    main()",
+        "detail": "src.extract",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "src.extract",
+        "description": "src.extract",
+        "peekOfCode": "logger = logging.getLogger(__name__)\nEUROSTAT_BASE_URL = \"https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data\"\nDATASET_CODE = \"road_eqr_carpda\"  # ajuste para o dataset que fizer sentido\nRAW_DATA_DIR = Path(__file__).resolve().parents[1] / \"data\" / \"raw\"\ndef fetch_eurostat_dataset(dataset_code: str, params: dict | None = None) -> dict:\n    \"\"\"Fetch a dataset from the Eurostat API and return it as parsed JSON.\"\"\"\n    url = f\"{EUROSTAT_BASE_URL}/{dataset_code}\"\n    default_params = {\"format\": \"JSON\", \"lang\": \"EN\"}\n    if params:\n        default_params.update(params)",
+        "detail": "src.extract",
+        "documentation": {}
+    },
+    {
+        "label": "EUROSTAT_BASE_URL",
+        "kind": 5,
+        "importPath": "src.extract",
+        "description": "src.extract",
+        "peekOfCode": "EUROSTAT_BASE_URL = \"https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data\"\nDATASET_CODE = \"road_eqr_carpda\"  # ajuste para o dataset que fizer sentido\nRAW_DATA_DIR = Path(__file__).resolve().parents[1] / \"data\" / \"raw\"\ndef fetch_eurostat_dataset(dataset_code: str, params: dict | None = None) -> dict:\n    \"\"\"Fetch a dataset from the Eurostat API and return it as parsed JSON.\"\"\"\n    url = f\"{EUROSTAT_BASE_URL}/{dataset_code}\"\n    default_params = {\"format\": \"JSON\", \"lang\": \"EN\"}\n    if params:\n        default_params.update(params)\n    logger.info(\"Fetching dataset %s from Eurostat...\", dataset_code)",
+        "detail": "src.extract",
+        "documentation": {}
+    },
+    {
+        "label": "DATASET_CODE",
+        "kind": 5,
+        "importPath": "src.extract",
+        "description": "src.extract",
+        "peekOfCode": "DATASET_CODE = \"road_eqr_carpda\"  # ajuste para o dataset que fizer sentido\nRAW_DATA_DIR = Path(__file__).resolve().parents[1] / \"data\" / \"raw\"\ndef fetch_eurostat_dataset(dataset_code: str, params: dict | None = None) -> dict:\n    \"\"\"Fetch a dataset from the Eurostat API and return it as parsed JSON.\"\"\"\n    url = f\"{EUROSTAT_BASE_URL}/{dataset_code}\"\n    default_params = {\"format\": \"JSON\", \"lang\": \"EN\"}\n    if params:\n        default_params.update(params)\n    logger.info(\"Fetching dataset %s from Eurostat...\", dataset_code)\n    response = requests.get(url, params=default_params, timeout=30)",
+        "detail": "src.extract",
+        "documentation": {}
+    },
+    {
+        "label": "RAW_DATA_DIR",
+        "kind": 5,
+        "importPath": "src.extract",
+        "description": "src.extract",
+        "peekOfCode": "RAW_DATA_DIR = Path(__file__).resolve().parents[1] / \"data\" / \"raw\"\ndef fetch_eurostat_dataset(dataset_code: str, params: dict | None = None) -> dict:\n    \"\"\"Fetch a dataset from the Eurostat API and return it as parsed JSON.\"\"\"\n    url = f\"{EUROSTAT_BASE_URL}/{dataset_code}\"\n    default_params = {\"format\": \"JSON\", \"lang\": \"EN\"}\n    if params:\n        default_params.update(params)\n    logger.info(\"Fetching dataset %s from Eurostat...\", dataset_code)\n    response = requests.get(url, params=default_params, timeout=30)\n    response.raise_for_status()",
+        "detail": "src.extract",
+        "documentation": {}
+    },
+    {
+        "label": "get_engine",
+        "kind": 2,
+        "importPath": "src.load",
+        "description": "src.load",
+        "peekOfCode": "def get_engine():\n    return create_engine(DB_URL)\ndef load_csv_to_staging(dataset_code: str, table_name: str = \"stg_registros_veiculos\"):\n    csv_path = PROCESSED_DATA_DIR / f\"{dataset_code}_clean.csv\"\n    if not csv_path.exists():\n        raise FileNotFoundError(f\"{csv_path} não existe. Rode transform.py primeiro.\")\n    df = pd.read_csv(csv_path)\n    engine = get_engine()\n    logger.info(\"Loading %d rows into table '%s'...\", len(df), table_name)\n    df.to_sql(table_name, engine, schema=\"staging\", if_exists=\"replace\", index=False)",
+        "detail": "src.load",
+        "documentation": {}
+    },
+    {
+        "label": "load_csv_to_staging",
+        "kind": 2,
+        "importPath": "src.load",
+        "description": "src.load",
+        "peekOfCode": "def load_csv_to_staging(dataset_code: str, table_name: str = \"stg_registros_veiculos\"):\n    csv_path = PROCESSED_DATA_DIR / f\"{dataset_code}_clean.csv\"\n    if not csv_path.exists():\n        raise FileNotFoundError(f\"{csv_path} não existe. Rode transform.py primeiro.\")\n    df = pd.read_csv(csv_path)\n    engine = get_engine()\n    logger.info(\"Loading %d rows into table '%s'...\", len(df), table_name)\n    df.to_sql(table_name, engine, schema=\"staging\", if_exists=\"replace\", index=False)\n    logger.info(\"Load concluído.\")\ndef main(dataset_code: str = \"road_eqr_carpda\"):",
+        "detail": "src.load",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "src.load",
+        "description": "src.load",
+        "peekOfCode": "def main(dataset_code: str = \"road_eqr_carpda\"):\n    load_csv_to_staging(dataset_code)\nif __name__ == \"__main__\":\n    main()",
+        "detail": "src.load",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "src.load",
+        "description": "src.load",
+        "peekOfCode": "logger = logging.getLogger(__name__)\nPROCESSED_DATA_DIR = Path(__file__).resolve().parents[1] / \"data\" / \"processed\"\nDB_URL = os.getenv(\n    \"DATABASE_URL\",\n    \"postgresql+psycopg2://postgres:postgres@localhost:5432/postgres\",\n)\ndef get_engine():\n    return create_engine(DB_URL)\ndef load_csv_to_staging(dataset_code: str, table_name: str = \"stg_registros_veiculos\"):\n    csv_path = PROCESSED_DATA_DIR / f\"{dataset_code}_clean.csv\"",
+        "detail": "src.load",
+        "documentation": {}
+    },
+    {
+        "label": "PROCESSED_DATA_DIR",
+        "kind": 5,
+        "importPath": "src.load",
+        "description": "src.load",
+        "peekOfCode": "PROCESSED_DATA_DIR = Path(__file__).resolve().parents[1] / \"data\" / \"processed\"\nDB_URL = os.getenv(\n    \"DATABASE_URL\",\n    \"postgresql+psycopg2://postgres:postgres@localhost:5432/postgres\",\n)\ndef get_engine():\n    return create_engine(DB_URL)\ndef load_csv_to_staging(dataset_code: str, table_name: str = \"stg_registros_veiculos\"):\n    csv_path = PROCESSED_DATA_DIR / f\"{dataset_code}_clean.csv\"\n    if not csv_path.exists():",
+        "detail": "src.load",
+        "documentation": {}
+    },
+    {
+        "label": "DB_URL",
+        "kind": 5,
+        "importPath": "src.load",
+        "description": "src.load",
+        "peekOfCode": "DB_URL = os.getenv(\n    \"DATABASE_URL\",\n    \"postgresql+psycopg2://postgres:postgres@localhost:5432/postgres\",\n)\ndef get_engine():\n    return create_engine(DB_URL)\ndef load_csv_to_staging(dataset_code: str, table_name: str = \"stg_registros_veiculos\"):\n    csv_path = PROCESSED_DATA_DIR / f\"{dataset_code}_clean.csv\"\n    if not csv_path.exists():\n        raise FileNotFoundError(f\"{csv_path} não existe. Rode transform.py primeiro.\")",
+        "detail": "src.load",
+        "documentation": {}
+    },
+    {
+        "label": "load_latest_raw_file",
+        "kind": 2,
+        "importPath": "src.transform",
+        "description": "src.transform",
+        "peekOfCode": "def load_latest_raw_file(dataset_code: str) -> dict:\n    files = sorted(RAW_DATA_DIR.glob(f\"{dataset_code}_*.json\"))\n    if not files:\n        raise FileNotFoundError(\n            f\"Nenhum arquivo raw encontrado para '{dataset_code}'. Rode extract.py primeiro.\"\n        )\n    latest_file = files[-1]\n    logger.info(\"Loading raw file: %s\", latest_file)\n    with open(latest_file, encoding=\"utf-8\") as f:\n        return json.load(f)",
+        "detail": "src.transform",
+        "documentation": {}
+    },
+    {
+        "label": "jsonstat_to_dataframe",
+        "kind": 2,
+        "importPath": "src.transform",
+        "description": "src.transform",
+        "peekOfCode": "def jsonstat_to_dataframe(jsonstat_data: dict) -> pd.DataFrame:\n    \"\"\"\n    Convert a JSON-stat dict (Eurostat format) into a tidy long-format DataFrame.\n    JSON-stat stores:\n    - id: list of dimension names in order\n    - size: list of dimension sizes\n    - dimension: dict with dimension details (index: code->position, label: code->name)\n    - value: flat array indexed by linear position\n    \"\"\"\n    try:",
+        "detail": "src.transform",
+        "documentation": {}
+    },
+    {
+        "label": "clean",
+        "kind": 2,
+        "importPath": "src.transform",
+        "description": "src.transform",
+        "peekOfCode": "def clean(df: pd.DataFrame) -> pd.DataFrame:\n    \"\"\"Standardize column names, country labels and fuel-type categories.\"\"\"\n    df = df.copy()\n    df.columns = [c.strip().lower().replace(\" \", \"_\") for c in df.columns]\n    # Map Eurostat column names to standard names\n    rename_map = {\n        \"geo\": \"country\",\n        \"time\": \"year\",\n        \"value\": \"registrations\",\n        \"mot_nrg\": \"power_type\",",
+        "detail": "src.transform",
+        "documentation": {}
+    },
+    {
+        "label": "save_processed",
+        "kind": 2,
+        "importPath": "src.transform",
+        "description": "src.transform",
+        "peekOfCode": "def save_processed(df: pd.DataFrame, dataset_code: str) -> Path:\n    PROCESSED_DATA_DIR.mkdir(parents=True, exist_ok=True)\n    output_path = PROCESSED_DATA_DIR / f\"{dataset_code}_clean.csv\"\n    df.to_csv(output_path, index=False)\n    logger.info(\"Processed data saved to %s (%d rows)\", output_path, len(df))\n    return output_path\ndef main(dataset_code: str = \"road_eqr_carpda\"):\n    raw = load_latest_raw_file(dataset_code)\n    df = jsonstat_to_dataframe(raw)\n    df_clean = clean(df)",
+        "detail": "src.transform",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "src.transform",
+        "description": "src.transform",
+        "peekOfCode": "def main(dataset_code: str = \"road_eqr_carpda\"):\n    raw = load_latest_raw_file(dataset_code)\n    df = jsonstat_to_dataframe(raw)\n    df_clean = clean(df)\n    save_processed(df_clean, dataset_code)\nif __name__ == \"__main__\":\n    main()",
+        "detail": "src.transform",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "src.transform",
+        "description": "src.transform",
+        "peekOfCode": "logger = logging.getLogger(__name__)\nRAW_DATA_DIR = Path(__file__).resolve().parents[1] / \"data\" / \"raw\"\nPROCESSED_DATA_DIR = Path(__file__).resolve().parents[1] / \"data\" / \"processed\"\ndef load_latest_raw_file(dataset_code: str) -> dict:\n    files = sorted(RAW_DATA_DIR.glob(f\"{dataset_code}_*.json\"))\n    if not files:\n        raise FileNotFoundError(\n            f\"Nenhum arquivo raw encontrado para '{dataset_code}'. Rode extract.py primeiro.\"\n        )\n    latest_file = files[-1]",
+        "detail": "src.transform",
+        "documentation": {}
+    },
+    {
+        "label": "RAW_DATA_DIR",
+        "kind": 5,
+        "importPath": "src.transform",
+        "description": "src.transform",
+        "peekOfCode": "RAW_DATA_DIR = Path(__file__).resolve().parents[1] / \"data\" / \"raw\"\nPROCESSED_DATA_DIR = Path(__file__).resolve().parents[1] / \"data\" / \"processed\"\ndef load_latest_raw_file(dataset_code: str) -> dict:\n    files = sorted(RAW_DATA_DIR.glob(f\"{dataset_code}_*.json\"))\n    if not files:\n        raise FileNotFoundError(\n            f\"Nenhum arquivo raw encontrado para '{dataset_code}'. Rode extract.py primeiro.\"\n        )\n    latest_file = files[-1]\n    logger.info(\"Loading raw file: %s\", latest_file)",
+        "detail": "src.transform",
+        "documentation": {}
+    },
+    {
+        "label": "PROCESSED_DATA_DIR",
+        "kind": 5,
+        "importPath": "src.transform",
+        "description": "src.transform",
+        "peekOfCode": "PROCESSED_DATA_DIR = Path(__file__).resolve().parents[1] / \"data\" / \"processed\"\ndef load_latest_raw_file(dataset_code: str) -> dict:\n    files = sorted(RAW_DATA_DIR.glob(f\"{dataset_code}_*.json\"))\n    if not files:\n        raise FileNotFoundError(\n            f\"Nenhum arquivo raw encontrado para '{dataset_code}'. Rode extract.py primeiro.\"\n        )\n    latest_file = files[-1]\n    logger.info(\"Loading raw file: %s\", latest_file)\n    with open(latest_file, encoding=\"utf-8\") as f:",
+        "detail": "src.transform",
+        "documentation": {}
+    },
+    {
+        "label": "data_file",
+        "kind": 5,
+        "importPath": "inspect_json",
+        "description": "inspect_json",
+        "peekOfCode": "data_file = Path(\"data/raw/road_eqr_carpda_20260816T162343.json\")\nwith open(data_file) as f:\n    d = json.load(f)\nprint(\"ID (dimension order):\", d.get(\"id\"))\nprint(\"SIZE (dimension sizes):\", d.get(\"size\"))\nprint(\"\\nDimensions:\")\nfor dim_name in d.get(\"id\", []):\n    dim_data = d.get(\"dimension\", {}).get(dim_name, {})\n    cat_data = dim_data.get(\"category\", {})\n    cat_index = cat_data.get(\"index\", {})",
+        "detail": "inspect_json",
+        "documentation": {}
+    }
+]
